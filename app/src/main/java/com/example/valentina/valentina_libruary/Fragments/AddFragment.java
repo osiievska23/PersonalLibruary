@@ -1,4 +1,4 @@
-package com.example.valentina.valentina_libruary.Frafments;
+package com.example.valentina.valentina_libruary.Fragments;
 
 
 import android.os.Bundle;

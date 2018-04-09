@@ -1,19 +1,20 @@
-package com.example.valentina.valentina_libruary.RealmObject;
+package com.example.valentina.valentina_libruary.RealmModel;
 
 import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.valentina.valentina_libruary.Object.Book;
-import com.example.valentina.valentina_libruary.RealmObject.DbHelper;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by Valentina on 01.04.2018.
  */
 
 public class RealmModel extends DbHelper {
+
     protected Realm realm;
 
     public RealmModel(Context context){
@@ -23,6 +24,13 @@ public class RealmModel extends DbHelper {
         //AddFirstBook();
         //CloseRealm();
     }
+
+    public RealmResults<Book> getRealmModel(){
+        if (realm.isClosed())
+            return null;
+        return realm.where(Book.class).findAll();
+    }
+
 
     public void setBook(EditText editName, EditText editAuthor,
                         TextView editCategory, EditText editDescription, String editImage){
@@ -49,7 +57,6 @@ public class RealmModel extends DbHelper {
 
             if(!editImage.equals(""))
                 book.setImage(editImage);
-
             realm.insertOrUpdate(book);
             realm.commitTransaction();
         } catch (Exception e) {

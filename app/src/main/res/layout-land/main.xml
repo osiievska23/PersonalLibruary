@@ -19,7 +19,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="65dp"
             android:text="   Welcome to the Valentina`s libruary"
             android:textSize="21dp"
             android:textColor="@color/white"
@@ -62,7 +62,7 @@
             android:focusable="true"
             android:textColorHighlight="@color/black_overlay"
             android:textColorHint="@color/colorPrimaryDark"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,12 +127,12 @@
 
         <info.hoang8f.widget.FButton
             android:id="@+id/log"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="80dp"
             android:text="Login"
             android:textColor="@android:color/white"
             fbutton:fButtonColor="@color/colorPrimary"
@@ -145,7 +145,7 @@
 
         <info.hoang8f.widget.FButton
             android:id="@+id/cancel"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"

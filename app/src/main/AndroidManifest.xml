@@ -16,13 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Commands" />
         <activity android:name=".Manage.ADD" />
         <activity android:name=".Manage.DEL" />
         <activity android:name=".Manage.Search" />
         <activity android:name=".Info_category" />
         <activity android:name=".Manage.Info" />
-        <activity android:name=".MenuBar"></activity>
+        <activity
+            android:name=".Drawer.Drawer"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Manage.Home"></activity>
     </application>
 
 </manifest>

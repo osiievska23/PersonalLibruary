@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.valentina.valentina_libruary.Drawer.Drawer;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,7 +37,7 @@ public class Main extends AppCompatActivity {
                 password.getText().toString().equals("admin")) {
             Toast.makeText(getApplicationContext(),
                     "Redirecting...", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, MenuBar.class);
+            Intent intent = new Intent(this, Drawer.class);
             startActivity(intent);
         }else{
             Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();

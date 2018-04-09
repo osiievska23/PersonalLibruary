@@ -1,4 +1,4 @@
-package com.example.valentina.valentina_libruary.RealmObject;
+package com.example.valentina.valentina_libruary.RealmModel;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;

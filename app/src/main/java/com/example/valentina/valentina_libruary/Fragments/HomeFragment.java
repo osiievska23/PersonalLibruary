@@ -1,12 +1,12 @@
-package com.example.valentina.valentina_libruary.Frafments;
+package com.example.valentina.valentina_libruary.Fragments;
 
 
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +19,6 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.example.valentina.valentina_libruary.Manage.Home;
 import com.example.valentina.valentina_libruary.R;
 
 import java.util.List;
@@ -30,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends AppCompatActivity {
 
     @BindView(R.id.bookList)
     SwipeMenuListView bookList;
@@ -41,18 +40,10 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this);
 
         mAppList = getPackageManager().getInstalledApplications(0);
-        mAdapter = new AppAdapter();
+        mAdapter = new HomeFragment.AppAdapter();
         bookList.setAdapter(mAdapter);
 
         // step 1. create a MenuCreator
@@ -163,9 +154,12 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public PackageManager getPackageManager() {
-        return packageManager;
-    }
+    /*@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_home, container, false);
+    }*/
 
     class AppAdapter extends BaseAdapter {
 

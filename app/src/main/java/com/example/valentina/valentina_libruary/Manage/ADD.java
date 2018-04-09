@@ -9,16 +9,13 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.valentina.valentina_libruary.Commands;
 import com.example.valentina.valentina_libruary.R;
-import com.example.valentina.valentina_libruary.RealmObject.RealmModel;
+import com.example.valentina.valentina_libruary.RealmModel.RealmModel;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -54,7 +51,7 @@ public class ADD extends AppCompatActivity {
     ImageView photo;
 
     @BindView(R.id.category_button)
-    ImageButton category_button;
+    Button category_button;
 
     @BindView(R.id.choosen_caterory)
     TextView category;
@@ -74,7 +71,6 @@ public class ADD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
         ButterKnife.bind(this);
-
     }
 
     @OnClick(R.id.image)
@@ -88,8 +84,6 @@ public class ADD extends AppCompatActivity {
     public void add(){
         RealmModel realm = new RealmModel(this);
         realm.setBook(name, author, category, description, bookImage);
-        Intent intent = new Intent(this, Commands.class);
-        startActivity(intent);
     }
 
     @OnClick(R.id.category_button)
@@ -123,7 +117,13 @@ public class ADD extends AppCompatActivity {
                 Uri selectedImage = data.getData();
                 if(selectedImage != null){
                     bookImage = getRealPathFromURI(selectedImage);
-                    Picasso.get().load(new File(bookImage)).into(photo);
+                    Picasso
+                            .with(this)
+                            .load(new File(bookImage))
+                            //.resize(50, 50)
+                            .fit()
+                            .into(photo);
+                    //Picasso.get().load(new File(bookImage)).into(photo);
                 }
             }
     }

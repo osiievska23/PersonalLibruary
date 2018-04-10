@@ -1,11 +1,9 @@
 package com.example.valentina.valentina_libruary.Manage;
 
 
-import android.database.Cursor;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -14,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -21,13 +20,13 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.valentina.valentina_libruary.Object.Book;
 import com.example.valentina.valentina_libruary.R;
+import com.example.valentina.valentina_libruary.RealmModel.RealmModel;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmModel;
 import io.realm.RealmResults;
 
 
@@ -48,6 +47,7 @@ public class Home extends AppCompatActivity {
 
         RealmModel realm = new RealmModel(this);
         books = realm.getRealmModel();
+        //ArrayList<Book> books = new ArrayList<>(RealmResults);
         // mAppList = getPackageManager().getInstalledApplications(0);
         mAdapter = new AppAdapter();
         bookList.setAdapter(mAdapter);
@@ -76,43 +76,29 @@ public class Home extends AppCompatActivity {
                         getApplicationContext());
                 item1.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
                 item1.setWidth(dp2px(60));
-                item1.setIcon(R.drawable.ic_info_outline_black_24dp);
+                item1.setIcon(R.drawable.ic_update_black_24dp);
                 menu.addMenuItem(item1);
                 SwipeMenuItem item2 = new SwipeMenuItem(
                         getApplicationContext());
-                item2.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
+                item2.setBackground(new ColorDrawable(Color.rgb(0x7b, 0x3f, 0x00)));
                 item2.setWidth(dp2px(60));
-                item2.setIcon(R.drawable.ic_update_black_24dp);
+                item2.setIcon(R.drawable.ic_delete_black_24dp);
                 menu.addMenuItem(item2);
-                SwipeMenuItem item3 = new SwipeMenuItem(
-                        getApplicationContext());
-                item3.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
-                item3.setWidth(dp2px(60));
-                item3.setIcon(R.drawable.ic_delete_black_24dp);
-                menu.addMenuItem(item3);
             }
 
             private void createMenu2(SwipeMenu menu) {
                 SwipeMenuItem item1 = new SwipeMenuItem(
                         getApplicationContext());
-                item1.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
+                item1.setBackground(new ColorDrawable(Color.rgb(0x7b, 0x3f, 0x00)));
                 item1.setWidth(dp2px(60));
-                item1.setIcon(R.drawable.ic_info_outline_black_24dp);
+                item1.setIcon(R.drawable.ic_update_black_24dp);
                 menu.addMenuItem(item1);
                 SwipeMenuItem item2 = new SwipeMenuItem(
                         getApplicationContext());
                 item2.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
                 item2.setWidth(dp2px(60));
-                item2.setIcon(R.drawable.ic_update_black_24dp);
+                item2.setIcon(R.drawable.ic_delete_black_24dp);
                 menu.addMenuItem(item2);
-                SwipeMenuItem item3 = new SwipeMenuItem(
-                        getApplicationContext());
-                item3.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
-
-                item3.setWidth(dp2px(60));
-                item3.setIcon(R.drawable.ic_delete_black_24dp);
-                menu.addMenuItem(item3);
-                // 0x7b, 0x3f, 0x00
                 // 0x7b, 0x3f, 0x00
                 // 0x70, 0x42, 0x14
             }
@@ -122,20 +108,14 @@ public class Home extends AppCompatActivity {
                         getApplicationContext());
                 item1.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
                 item1.setWidth(dp2px(60));
-                item1.setIcon(R.drawable.ic_info_outline_black_24dp);
+                item1.setIcon(R.drawable.ic_update_black_24dp);
                 menu.addMenuItem(item1);
                 SwipeMenuItem item2 = new SwipeMenuItem(
                         getApplicationContext());
-                item2.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
+                item2.setBackground(new ColorDrawable(Color.rgb(0x7b, 0x3f, 0x00)));
                 item2.setWidth(dp2px(60));
-                item2.setIcon(R.drawable.ic_update_black_24dp);
+                item2.setIcon(R.drawable.ic_delete_black_24dp);
                 menu.addMenuItem(item2);
-                SwipeMenuItem item3 = new SwipeMenuItem(
-                        getApplicationContext());
-                item3.setBackground(new ColorDrawable(Color.rgb(0x70, 0x42, 0x14)));
-                item3.setWidth(dp2px(60));
-                item3.setIcon(R.drawable.ic_delete_black_24dp);
-                menu.addMenuItem(item3);
             }
         };
         // set creator
@@ -148,14 +128,32 @@ public class Home extends AppCompatActivity {
                 Book item = books.get(position);
                 switch (index) {
                     case 0:
-                        // open
+                        // update
+                        Intent intent = new Intent(Home.this, Add.class);
+                        if (item.getName() != ""){
+                            intent.putExtra("name" , item.getName());
+                        } else intent.putExtra("name" , "");
+                        if (item.getAuthor() != ""){
+                            intent.putExtra("author" , item.getAuthor());
+                        } else intent.putExtra("author" , "");
+                        if (item.getCategory() != ""){
+                            intent.putExtra("category" , item.getCategory());
+                        } else intent.putExtra("category" , "");
+                        if (item.getDescription() != ""){
+                            intent.putExtra("description" , item.getDescription());
+                        } else intent.putExtra("description" , "");
+                        if (item.getImage() != ""){
+                            intent.putExtra("image" , item.getImage());
+                        } else intent.putExtra("image" , "");
+                        intent.putExtra("flag" , true);
+                        startActivity(intent);
                         break;
                     case 1:
                         // delete
-                    case 2:
-//					delete(item);
-                        books.remove(position);
-                        mAdapter.notifyDataSetChanged();
+                        RealmModel realm1 = new RealmModel(getApplicationContext());
+                        realm1.deleteRealmObject(item);
+                        Intent intent1 = new Intent(Home.this, Home.class);
+                        startActivity(intent1);
                         break;
                 }
                 return false;
@@ -205,7 +203,7 @@ public class Home extends AppCompatActivity {
 
             if (item.getImage() != ""){
                 Picasso.with(getApplicationContext())
-                        .load(new File(item.getImage()))
+                        .load(item.getImage())
                         .fit()
                         .into(holder.iv_icon);
             } else{
@@ -216,7 +214,21 @@ public class Home extends AppCompatActivity {
             }
 
             //holder.iv_icon.setImageDrawable(item.getImage());
-            holder.tv_name.setText(item.getName());
+            holder.tv_name.setText(item.getName()+"\n"+item.getAuthor());
+            holder.iv_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Home.this, Tabbar.class);
+                    startActivity(intent);
+                }
+            });
+            holder.tv_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Home.this, Tabbar.class);
+                    startActivity(intent);
+                }
+            });
             return convertView;
         }
 
@@ -230,21 +242,6 @@ public class Home extends AppCompatActivity {
                 view.setTag(this);
             }
         }
-    }
-
-    protected String getRealPathFromURI(Uri contentURI) {
-        String result;
-        Cursor cursor = getContentResolver()
-                .query(contentURI, null, null, null, null);
-        if (cursor == null) {
-            result = contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
-        }
-        return result;
     }
 
     private int dp2px(int dp) {

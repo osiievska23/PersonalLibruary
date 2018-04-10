@@ -71,6 +71,6 @@ public class Book extends RealmObject {
     }
 
     public void setImage(String image) {
-        this.description = image;
+        this.image = image;
     }
 }

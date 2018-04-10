@@ -835,7 +835,7 @@ public class RealmConfiguration {
         private void checkModule(Object module) {
             if (!module.getClass().isAnnotationPresent(RealmModule.class)) {
                 throw new IllegalArgumentException(module.getClass().getCanonicalName() + " is not a RealmModule. " +
-                        "ADD @RealmModule to the class definition.");
+                        "Add @RealmModule to the class definition.");
             }
         }
     }

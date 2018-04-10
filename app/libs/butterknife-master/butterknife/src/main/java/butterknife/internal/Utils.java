@@ -116,7 +116,7 @@ public final class Utils {
           + id
           + " for "
           + who
-          + " was of the wrong type. See cause for more info.", e);
+          + " was of the wrong type. See cause for more book_info.", e);
     }
   }
 
@@ -133,7 +133,7 @@ public final class Utils {
           + (toPos + 1)
           + " of method '"
           + to
-          + "'. See cause for more info.", e);
+          + "'. See cause for more book_info.", e);
     }
   }
 

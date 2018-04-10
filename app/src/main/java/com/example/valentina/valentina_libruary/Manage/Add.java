@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.valentina.valentina_libruary.Drawer.Drawer;
 import com.example.valentina.valentina_libruary.R;
 import com.example.valentina.valentina_libruary.RealmModel.RealmModel;
 import com.squareup.picasso.Picasso;
@@ -24,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ADD extends AppCompatActivity {
+public class Add extends AppCompatActivity {
 
     @BindView(R.id.name)
     EditText name;
@@ -56,6 +58,7 @@ public class ADD extends AppCompatActivity {
     @BindView(R.id.choosen_caterory)
     TextView category;
 
+    //public boolean flag = false;
     public String bookImage;
     private final int GALLERY_REQUEST = 1;
     private final int IDD_LIST_CAT = 1;
@@ -71,6 +74,22 @@ public class ADD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        boolean flag = intent.getBooleanExtra("flag", false);
+        if (flag)
+            setEditTexts();
+    }
+
+    public void setEditTexts(){
+        Intent intent = getIntent();
+        name.setText(intent.getStringExtra("name"));
+        author.setText(intent.getStringExtra("author"));
+        category.setText(intent.getStringExtra("category"));
+        description.setText(intent.getStringExtra("description"));
+        bookImage = intent.getStringExtra("image");
+        // image.setText(intent.getStringExtra("image"));
+
     }
 
     @OnClick(R.id.image)
@@ -84,6 +103,8 @@ public class ADD extends AppCompatActivity {
     public void add(){
         RealmModel realm = new RealmModel(this);
         realm.setBook(name, author, category, description, bookImage);
+        Intent intent = new Intent(this, Drawer.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.category_button)

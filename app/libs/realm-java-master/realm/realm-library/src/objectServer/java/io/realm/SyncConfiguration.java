@@ -169,7 +169,7 @@ public class SyncConfiguration extends RealmConfiguration {
             for (Object module : modules) {
                 if (!module.getClass().isAnnotationPresent(RealmModule.class)) {
                     throw new IllegalArgumentException(module.getClass().getCanonicalName() + " is not a RealmModule. " +
-                            "ADD @RealmModule to the class definition.");
+                            "Add @RealmModule to the class definition.");
                 }
                 validatedModules.add(module);
             }
@@ -1107,7 +1107,7 @@ public class SyncConfiguration extends RealmConfiguration {
         private void checkModule(Object module) {
             if (!module.getClass().isAnnotationPresent(RealmModule.class)) {
                 throw new IllegalArgumentException(module.getClass().getCanonicalName() + " is not a RealmModule. " +
-                        "ADD @RealmModule to the class definition.");
+                        "Add @RealmModule to the class definition.");
             }
         }
     }

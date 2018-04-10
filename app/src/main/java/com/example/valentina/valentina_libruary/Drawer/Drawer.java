@@ -11,8 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.valentina.valentina_libruary.Fragments.HomeFragment;
-import com.example.valentina.valentina_libruary.Manage.ADD;
+import com.example.valentina.valentina_libruary.Manage.Add;
 import com.example.valentina.valentina_libruary.Manage.Home;
 import com.example.valentina.valentina_libruary.R;
 
@@ -40,10 +39,6 @@ public class Drawer extends AppCompatActivity
         startActivity(intent);
 
         navigationView.setCheckedItem(R.id.home);
-
-        /*Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
-        navigationView.setCheckedItem(R.id.home);*/
     }
 
     public void setActionBarTitle(String title){
@@ -93,14 +88,14 @@ public class Drawer extends AppCompatActivity
                     .beginTransaction();
             ft.replace(R.id.drawer_layout, new HomeFragment());
             ft.commit();*/
-            Intent intent = new Intent(Drawer.this, Home.class);
+            Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         } else if (id == R.id.add) {
             /*android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
                     .beginTransaction();
             ft.replace(R.id.drawer_layout, new HomeFragment());
             ft.commit();*/
-            Intent intent = new Intent(Drawer.this, ADD.class);
+            Intent intent = new Intent(this, Add.class);
             startActivity(intent);
         } else if (id == R.id.tools) {
 

@@ -91,7 +91,7 @@ public class NYTimesDataLoader {
 
                 // Find existing story in Realm (if any)
                 // If it exists, we need to merge the local state with the remote, because the local state
-                // contains more info than is available on the server.
+                // contains more book_info than is available on the server.
                 NYTimesStory persistedStory = r.where(NYTimesStory.class).equalTo(NYTimesStory.URL, story.getUrl()).findFirst();
                 if (persistedStory != null) {
                     // Only local state is the `read` boolean.

@@ -182,7 +182,7 @@ public class RunWithRemoteService implements TestRule {
         // TODO: Find a way to block caller thread until the service process finishes current step.
     }
 
-    // Get the remote process info if it is alive.
+    // Get the remote process book_info if it is alive.
     private ActivityManager.RunningAppProcessInfo getRemoteProcessInfo() {
         ActivityManager manager = (ActivityManager)getContext().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> processInfoList = manager.getRunningAppProcesses();

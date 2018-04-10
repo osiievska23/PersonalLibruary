@@ -21,14 +21,38 @@ public class RealmModel extends DbHelper {
         Realm.init(context);
         config();
         realm = Realm.getDefaultInstance();
-        //AddFirstBook();
-        //CloseRealm();
+    }
+
+    public boolean isInRealm(String name, String author, String category, String description, String image){
+        if((realm.where(Book.class)
+                    .equalTo("name", name)
+                    .equalTo("author", author)
+                    .equalTo("category", category)
+                    .equalTo("description", description)
+                    .equalTo("description", image)
+                    .findAll()).isEmpty()){
+            return false;
+        }
+            return true;
     }
 
     public RealmResults<Book> getRealmModel(){
         if (realm.isClosed())
             return null;
         return realm.where(Book.class).findAll();
+    }
+
+    public void deleteRealmObject(Book book){
+        realm.beginTransaction();
+        (realm.where(Book.class)
+                .equalTo("name", book.getName())
+                .equalTo("author", book.getAuthor())
+                .equalTo("category", book.getCategory())
+                .equalTo("description", book.getDescription())
+                .findFirst()
+        )
+                .deleteFromRealm();
+        realm.commitTransaction();
     }
 
 
@@ -57,6 +81,7 @@ public class RealmModel extends DbHelper {
 
             if(!editImage.equals(""))
                 book.setImage(editImage);
+
             realm.insertOrUpdate(book);
             realm.commitTransaction();
         } catch (Exception e) {
@@ -64,52 +89,15 @@ public class RealmModel extends DbHelper {
         }
     }
 
-    public void CloseRealm(){
+    public void closeRealm(){
         realm.close();
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        CloseRealm();
+        closeRealm();
     }
 
-    public void AddFirstBook(){
-        realm.beginTransaction();
-        try{
-            // set defolt book #1
-            Book book = realm.createObject(Book.class);
-            //book.setId("000000");
-            book.setName("Harry Potter and the Philosopher's Stone");
-            book.setAuthor("J. K. Rowling");
-            book.setCategory("Fantasy");
-            book.setDescription("Harry Potter and the Philosopher's Stone is a " +
-                    "fantasy novel written by British author J. K. Rowling. It is " +
-                    "the first novel in the Harry Potter series and Rowling's debut " +
-                    "novel, first published in 1997 by Bloomsbury. It was published " +
-                    "in the United States as Harry Potter and the Sorcerer's Stone " +
-                    "by Scholastic Corporation in 1998.");
-            //book.setStatus("Free");
-            realm.insertOrUpdate(book);
-            realm.commitTransaction();
-
-            // set defolt book #1
-            Book book1 = realm.createObject(Book.class);
-            //book1.setId("000001");
-            book1.setName("Three Comrades");
-            book1.setAuthor("Erich Maria Remarque");
-            book1.setCategory("Novel");
-            book1.setDescription("Three Comrades (German: Drei Kameraden) is a novel first " +
-                    "published in 1936 by the German author Erich Maria Remarque. It is written " +
-                    "in first person by the main character Robert Lohkamp, whose somewhat " +
-                    "disillusioned outlook on life is due to his horrifying experiences in " +
-                    "the trenches of the First World War's French-German front.");
-            //book1.setStatus("Taken");
-            realm.insertOrUpdate(book1);
-            realm.commitTransaction();
-        } catch (Exception e) {
-            realm.cancelTransaction();
-        }
-    }
 }
 

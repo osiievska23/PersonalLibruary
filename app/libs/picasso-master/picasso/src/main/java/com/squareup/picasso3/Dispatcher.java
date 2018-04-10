@@ -340,7 +340,7 @@ class Dispatcher {
       }
       hunter.future = service.submit(hunter);
     } else {
-      // Mark for replay only if we observe network info changes and support replay.
+      // Mark for replay only if we observe network book_info changes and support replay.
       boolean willReplay = scansNetworkChanges && hunter.supportsReplay();
       performError(hunter, willReplay);
       if (willReplay) {

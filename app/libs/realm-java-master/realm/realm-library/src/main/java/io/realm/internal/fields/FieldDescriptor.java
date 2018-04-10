@@ -86,7 +86,7 @@ public abstract class FieldDescriptor {
     /**
      * Convenience method to allow var-arg specification of valid final column types
      *
-     * @param schema Proxy to schema info
+     * @param schema Proxy to schema book_info
      * @param table the start table
      * @param fieldDescription dot-separated column names
      * @param validFinalColumnTypes legal types for the last column
@@ -110,7 +110,7 @@ public abstract class FieldDescriptor {
     /**
      * Factory method for field descriptors.
      *
-     * @param schema Proxy to schema info
+     * @param schema Proxy to schema book_info
      * @param table the start table
      * @param fieldDescription dot-separated column names
      * @param validFinalColumnTypes legal types for the last column

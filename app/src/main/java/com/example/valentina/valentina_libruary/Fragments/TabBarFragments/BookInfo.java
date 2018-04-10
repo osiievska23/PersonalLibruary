@@ -2,17 +2,31 @@ package com.example.valentina.valentina_libruary.Fragments.TabBarFragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.valentina.valentina_libruary.R;
 
+import butterknife.BindView;
 
-public class BookInfoFragment extends android.support.v4.app.Fragment {
+
+public class BookInfo extends Fragment {
+
+    @BindView(R.id.name)
+    TextView name;
+
+    @BindView(R.id.author)
+    TextView author;
+
+    @BindView(R.id.category)
+    TextView category;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.book_info_fragment, container, )
+        return inflater.inflate(R.layout.book_info, container, false);
     }
 }

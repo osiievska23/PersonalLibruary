@@ -30,7 +30,7 @@ import io.realm.exceptions.RealmException;
 /**
  * Utility class used to cache the mapping between object field names and their column indices. The
  * {@code ColumnIndices} instance is dedicated to a single {@link io.realm.BaseRealm} instance. Different Realm
- * instances will never share the same column indices cache. The column info cache is loaded lazily. A
+ * instances will never share the same column indices cache. The column book_info cache is loaded lazily. A
  * {@link ColumnInfo} will be added to the cache when the relevant Realm object gets accessed.
  * <p>
  * This class can be mutated, after construction, in two ways:

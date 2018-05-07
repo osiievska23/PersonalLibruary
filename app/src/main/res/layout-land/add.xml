@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="Category:"
+                android:text="Genre:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Menu"
                 android:textColor="@color/white" />
 
@@ -215,7 +215,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Add book"
+                android:text="Add / update book"
                 android:textColor="@android:color/white"
                 app:fButtonColor="@color/colorPrimary"
                 fbutton:cornerRadius="15dp"
@@ -231,7 +231,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="8dp"
-                android:text="Dowload image"
+                android:text="Download image"
                 android:textColor="@android:color/white"
                 app:fButtonColor="@color/colorPrimary"
                 fbutton:cornerRadius="15dp"

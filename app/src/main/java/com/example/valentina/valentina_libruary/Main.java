@@ -33,6 +33,7 @@ public class Main extends AppCompatActivity {
 
     @OnClick(R.id.log)
     public void log(){
+
         if(login.getText().toString().equals("admin") &&
                 password.getText().toString().equals("admin")) {
             Toast.makeText(getApplicationContext(),

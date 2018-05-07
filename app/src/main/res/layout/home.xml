@@ -5,20 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lib4"
-    android:orientation="vertical"
-    tools:context="com.example.valentina.valentina_libruary.Manage.Home">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/bookList"
+        android:background="@drawable/lib4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.baoyz.swipemenulistview.SwipeMenuListView
-            android:id="@+id/bookList"
-            android:background="@drawable/lib4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

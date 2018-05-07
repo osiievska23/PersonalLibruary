@@ -14,6 +14,7 @@ public class Book extends RealmObject {
     public String name;
     public String author;
     public String category;
+    public String link;
     //public String status;
     public String description;
     public String image;
@@ -50,13 +51,13 @@ public class Book extends RealmObject {
         this.category = category;
     }
 
-    /*public String getStatus() {
-        return status;
+    public String getLink() {
+        return link;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }*/
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getDescription() {
         return description;

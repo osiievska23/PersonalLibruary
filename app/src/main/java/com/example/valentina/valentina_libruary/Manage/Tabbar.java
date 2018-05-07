@@ -22,6 +22,8 @@ import com.example.valentina.valentina_libruary.Fragments.TabBarFragments.BookDe
 import com.example.valentina.valentina_libruary.Fragments.TabBarFragments.BookInfo;
 import com.example.valentina.valentina_libruary.R;
 
+import butterknife.BindView;
+
 public class Tabbar extends AppCompatActivity {
 
     /**
@@ -58,8 +60,6 @@ public class Tabbar extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-
 
     }
 

@@ -1,13 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.valentina.valentina_libruary.Fragments.navigationBarFragments.FragmentHome">
+    android:background="@drawable/lib4"
+    android:orientation="vertical"
+    tools:context="com.example.valentina.valentina_libruary.Fragments.navigationBarFragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/bookList"
+        android:background="@drawable/lib4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent" />
 
-</FrameLayout>
+
+</LinearLayout>

@@ -20,7 +20,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Enter the information about your book"
+            android:text="@string/enter_the_information_about_your_book"
             android:textSize="20dp"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title.Inverse" />

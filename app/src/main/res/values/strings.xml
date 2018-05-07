@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Valentina\'s library</string>
+    <string name="app_name">Personal library</string>
     <string name="action_settings">Settings</string>
     <string name="drawer_item_home">Home</string>
     <string name="drawer_item_free_play">Free Play</string>
@@ -24,6 +24,8 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="welcome_to_the_personal_libruary">   Welcome to the Personal libruary</string>
+    <string name="enter_the_information_about_your_book">Enter the information about your book</string>
 </resources>
 
     <!--<resources>

@@ -18,12 +18,17 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.example.valentina.valentina_libruary.Fragments.AddFragment;
+import com.example.valentina.valentina_libruary.Fragments.TabBarFragments.BookDescription;
+import com.example.valentina.valentina_libruary.Fragments.TabBarFragments.BookInfo;
 import com.example.valentina.valentina_libruary.Object.Book;
 import com.example.valentina.valentina_libruary.R;
 import com.example.valentina.valentina_libruary.RealmModel.RealmModel;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+
+import java.io.File;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -162,7 +167,9 @@ public class Home extends AppCompatActivity {
 
     }
 
-    class AppAdapter extends BaseAdapter {
+    class AppAdapter extends BaseAdapter implements View.OnClickListener {
+
+        Book item;
 
         @Override
         public int getCount() {
@@ -199,37 +206,46 @@ public class Home extends AppCompatActivity {
                 new ViewHolder(convertView);
             }
             ViewHolder holder = (ViewHolder) convertView.getTag();
-            Book item = getItem(position);
+            item = getItem(position);
 
-            if (item.getImage() != ""){
+            if (!Objects.equals(item.getImage(), "")){
                 Picasso.with(getApplicationContext())
-                        .load(item.getImage())
-                        .fit()
+                        .load(new File(item.getImage()))
+                        .resize(300, 300)
                         .into(holder.iv_icon);
             } else{
                 Picasso.with(getApplicationContext())
                         .load("@drawable/book")
-                        .fit()
+                        .resize(300, 300)
                         .into(holder.iv_icon);
             }
 
             //holder.iv_icon.setImageDrawable(item.getImage());
             holder.tv_name.setText(item.getName()+"\n"+item.getAuthor());
-            holder.iv_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Home.this, Tabbar.class);
-                    startActivity(intent);
-                }
-            });
-            holder.tv_name.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Home.this, Tabbar.class);
-                    startActivity(intent);
-                }
-            });
+            holder.iv_icon.setOnClickListener(this);
+            holder.tv_name.setOnClickListener(this);
             return convertView;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Home.this, Tabbar.class);
+            if (item.getName() != ""){
+                intent.putExtra("name" , item.getName());
+            } else intent.putExtra("name" , "");
+            if (item.getAuthor() != ""){
+                intent.putExtra("author" , item.getAuthor());
+            } else intent.putExtra("author" , "");
+            if (item.getCategory() != ""){
+                intent.putExtra("category" , item.getCategory());
+            } else intent.putExtra("category" , "");
+            if (item.getDescription() != ""){
+                intent.putExtra("description" , item.getDescription());
+            } else intent.putExtra("description" , "");
+            if (item.getImage() != ""){
+                intent.putExtra("image" , item.getImage());
+            } else intent.putExtra("image" , "");
+            startActivity(intent);
         }
 
         class ViewHolder {

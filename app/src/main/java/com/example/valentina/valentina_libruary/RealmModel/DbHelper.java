@@ -11,7 +11,7 @@ abstract class DbHelper {
     protected void config(){
         RealmConfiguration config = new RealmConfiguration
                 .Builder()
-                .name("mySuperRealm.realm")
+                .name("myPersonalRealm.realm")
                 .build();
         Realm.setDefaultConfiguration(config);
     }

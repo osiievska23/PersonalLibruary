@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.valentina.valentina_libruary.Fragments.navigationBarFragments.HomeFragment;
+import com.example.valentina.valentina_libruary.Fragments.navigationBarFragments.SearchFragment;
+import com.example.valentina.valentina_libruary.Fragments.navigationBarFragments.InfoFragment;
 import com.example.valentina.valentina_libruary.Manage.Add;
-import com.example.valentina.valentina_libruary.Manage.Home;
 import com.example.valentina.valentina_libruary.R;
 
 public class Drawer extends AppCompatActivity
@@ -34,15 +36,13 @@ public class Drawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //default fragment
-        Intent intent = new Intent(Drawer.this, Home.class);
-        startActivity(intent);
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
+                .beginTransaction();
+        ft.replace(R.id.container, new HomeFragment());
+        ft.commit();
 
-        navigationView.setCheckedItem(R.id.home);
-    }
+        navigationView.setCheckedItem(R.id.home_fragment);
 
-    public void setActionBarTitle(String title){
-        getSupportActionBar().setTitle(title);
     }
 
     @Override
@@ -80,29 +80,38 @@ public class Drawer extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.home) {
-            /*android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
+        if (id == R.id.home_fragment) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
                     .beginTransaction();
-            ft.replace(R.id.drawer_layout, new HomeFragment());
-            ft.commit();*/
-            Intent intent = new Intent(this, Home.class);
-            startActivity(intent);
+            ft.replace(R.id.container, new HomeFragment());
+            ft.commit();
         } else if (id == R.id.add) {
-            /*android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
-                    .beginTransaction();
-            ft.replace(R.id.drawer_layout, new HomeFragment());
-            ft.commit();*/
             Intent intent = new Intent(this, Add.class);
             startActivity(intent);
-        } else if (id == R.id.tools) {
+        } else if (id == R.id.info) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
+                    .beginTransaction();
+            ft.replace(R.id.container, new InfoFragment());
+            ft.commit();
+        } else if (id == R.id.search){
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
+                    .beginTransaction();
+            ft.replace(R.id.container, new SearchFragment());
+            ft.commit();
+         }
 
-        }
+        // Выделяем выбранный пункт меню в шторке
+        item.setChecked(true);
+        // Выводим выбранный пункт в заголовке
+        setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
